@@ -1,9 +1,14 @@
 #include "libprg/libprg.h"
 #include <stdio.h>
+#include <stdlib.h>
 
-int main()
+void criar_lista(int *lista, int tamanho)
 {
-    printf("casa verde.\n");
+    lista = (int *) calloc (tamanho, sizeof(int));
 
-    return 0;
+    if(lista == NULL)
+    {
+        printf("Erro na alocação.\n");
+        exit(EXIT_FAILURE);
+    }
 }
