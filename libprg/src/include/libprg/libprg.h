@@ -17,6 +17,7 @@ typedef struct {
 void criar_lista(Lista *lista, int tamanho);
 void imprimir(Lista *lista);
 void inserir_nao_ord(Lista *lista, int x);
+void inserir_ord(Lista *lista, int x);
 int busca_linear(Lista *lista, int x);
 void remover_nao_ord(Lista *lista, int x);
 
