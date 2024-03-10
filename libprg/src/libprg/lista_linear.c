@@ -9,7 +9,7 @@ void criar_lista(Lista *lista, int tamanho)
     if(lista->valores == NULL)
     {
         printf("Erro na alocação.\n");
-        exit(EXIT_FAILURE);
+        exit(1);
     }
     lista->tamanho = tamanho;
     lista->qtd_elementos = 0;
@@ -27,9 +27,34 @@ void inserir_nao_ord(Lista *lista, int x)
         if(x == lista->valores[i])
         {
             printf("valor ja pertence a lista.\n");
-            exit(EXIT_FAILURE);
+            exit(1);
         }
     lista->valores[lista->qtd_elementos] = x;
+    lista->qtd_elementos += 1;
+}
+
+void inserir_ord(Lista *lista, int x)
+{
+    int aux1 = 0, aux2 = lista->qtd_elementos;
+
+    for(int i = 0; i < lista->qtd_elementos; i++)
+    {
+        if(x == lista->valores[i])
+        {
+            printf("valor ja pertence a lista.\n");
+            exit(1);
+        }
+        if(x < lista->valores[i])
+        {
+            aux1 = i;
+            break;
+        }
+    }
+    //aux1 = posicao que o X vai ser colocado
+    //aux2 = final da lista
+    for(int i = aux2; i > aux1; i--)
+        lista->valores[i] = lista->valores[i - 1];
+    lista->valores[aux1] = x;
     lista->qtd_elementos += 1;
 }
 
@@ -50,5 +75,6 @@ void remover_nao_ord(Lista *lista, int x)
             lista->valores[i] = lista->valores[lista->qtd_elementos - 1];
             lista->valores[lista->qtd_elementos - 1] = 0;
             lista->qtd_elementos -= 1;
+            break;
         }
 }
