@@ -1,80 +1,98 @@
 #include "libprg/libprg.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
+#define CAPACIDADE_INICIAL 10
 
-void criar_lista(Lista *lista, int tamanho)
+typedef struct Lista{
+    int *valores;
+    int tamanho;
+    int capacidade;
+    bool ordenada;
+} Lista;
+
+Lista *criar_lista()
 {
-    lista->valores = (int *) calloc (tamanho, sizeof(int));
+    Lista *lista = (Lista *) malloc(sizeof(Lista));
+
+    lista->valores = (int *) malloc (CAPACIDADE_INICIAL * sizeof (int));
 
     if(lista->valores == NULL)
     {
         printf("Erro na alocação.\n");
         exit(1);
     }
-    lista->tamanho = tamanho;
-    lista->qtd_elementos = 0;
+    lista->capacidade = CAPACIDADE_INICIAL;
+    lista->tamanho = 0;
+    lista->ordenada = false;
+
+    return lista;
+}
+
+Lista *criar_lista_ord()
+{
+    Lista *lista = criar_lista();
+    lista->ordenada = true;
+    return lista;
 }
 
 void imprimir(Lista *lista)
 {
-    for(int i = 0; i < lista->qtd_elementos; i++)
+    for(int i = 0; i < lista->tamanho; i++)
         printf("%d ", lista->valores[i]);
 }
 
-void inserir_nao_ord(Lista *lista, int x)
+void inserir(Lista *lista, int x)
 {
-    for(int i = 0; i < lista->qtd_elementos; i++)
-        if(x == lista->valores[i])
-        {
-            printf("valor ja pertence a lista.\n");
-            exit(1);
-        }
-    lista->valores[lista->qtd_elementos] = x;
-    lista->qtd_elementos += 1;
+    
 }
 
-void inserir_ord(Lista *lista, int x)
+void remover(Lista *lista, int x)
 {
-    int aux1 = 0, aux2 = lista->qtd_elementos;
+    int indice_removido = busca_binaria(lista, x);
 
-    for(int i = 0; i < lista->qtd_elementos; i++)
-    {
-        if(x == lista->valores[i])
+    if(indice_removido >= 0)
+        for(int i = indice_removido; i < lista->tamanho - 1; i++)
         {
-            printf("valor ja pertence a lista.\n");
-            exit(1);
+            lista->valores[i] = lista->valores[i + 1];
+            lista->tamanho -= 1;
         }
-        if(x < lista->valores[i])
-        {
-            aux1 = i;
-            break;
-        }
-    }
-    //aux1 = posicao que o X vai ser colocado
-    //aux2 = final da lista
-    for(int i = aux2; i > aux1; i--)
-        lista->valores[i] = lista->valores[i - 1];
-    lista->valores[aux1] = x;
-    lista->qtd_elementos += 1;
+    else
+        for(int i = 0; i < lista->tamanho; i++)
+            if(x == lista->valores[i])
+            {
+                lista->valores[i] = lista->valores[lista->tamanho - 1];
+                lista->tamanho -= 1;
+                break;
+            }
 }
 
 int busca_linear(Lista *lista, int x)
 {
     //retorna o indice da posicao que esta o elemento ou -1 se nao existe na lista
-    for(int i = 0; i < lista->qtd_elementos; i++)
+    for(int i = 0; i < lista->tamanho; i++)
         if(x == lista->valores[i])
             return i;
     return -1;
 }
 
-void remover_nao_ord(Lista *lista, int x)
+int busca_binaria(Lista *lista, int x)
 {
-    for(int i = 0; i < lista->qtd_elementos; i++)
-        if(x == lista->valores[i])
+    // essa funçao vai retornar o indice do elemento encontrado
+    int meio, final = lista->tamanho - 1, inicio = 0;
+
+    if(lista->ordenada)
+        while(inicio <= final)
         {
-            lista->valores[i] = lista->valores[lista->qtd_elementos - 1];
-            lista->valores[lista->qtd_elementos - 1] = 0;
-            lista->qtd_elementos -= 1;
-            break;
+            meio = inicio + (final - inicio) / 2;
+            if(lista->valores[meio] == x)
+                return meio;
+            else if(lista->valores[meio] < x)
+                inicio = meio + 1;
+            else
+                final = meio - 1;
         }
+    else
+        return -1;
+    // retorna -1 se a lista é nao ordenada.
 }
