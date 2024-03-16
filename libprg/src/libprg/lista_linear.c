@@ -44,27 +44,7 @@ void imprimir(Lista *lista)
 
 void inserir(Lista *lista, int x)
 {
-    
-}
 
-void remover(Lista *lista, int x)
-{
-    int indice_removido = busca_binaria(lista, x);
-
-    if(indice_removido >= 0)
-        for(int i = indice_removido; i < lista->tamanho - 1; i++)
-        {
-            lista->valores[i] = lista->valores[i + 1];
-            lista->tamanho -= 1;
-        }
-    else
-        for(int i = 0; i < lista->tamanho; i++)
-            if(x == lista->valores[i])
-            {
-                lista->valores[i] = lista->valores[lista->tamanho - 1];
-                lista->tamanho -= 1;
-                break;
-            }
 }
 
 int busca_linear(Lista *lista, int x)
@@ -74,6 +54,27 @@ int busca_linear(Lista *lista, int x)
         if(x == lista->valores[i])
             return i;
     return -1;
+}
+
+void remover(Lista *lista, int x)
+{
+    int indice_removido = busca_binaria(lista, x);
+
+    if(indice_removido >= 0)
+        for(int i = indice_removido; i < lista->tamanho - 1; i++)
+            lista->valores[i] = lista->valores[i + 1];
+    else
+    {
+        indice_removido = busca_linear(lista, x);
+        if(indice_removido >= 0)
+            lista->valores[indice_removido] = lista->valores[lista->tamanho - 1];
+        else
+        {
+            printf("elemento nao esta na lista.\n");
+            exit(1);
+        }
+    }
+    lista->tamanho -= 1;
 }
 
 int busca_binaria(Lista *lista, int x)
@@ -93,6 +94,7 @@ int busca_binaria(Lista *lista, int x)
                 final = meio - 1;
         }
     else
-        return -1;
-    // retorna -1 se a lista é nao ordenada.
+        return -1; // retorna -1 se a lista é nao ordenada.
+    printf("elemento nao esta na lista.\n");
+    exit(1);
 }
