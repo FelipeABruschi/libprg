@@ -40,20 +40,36 @@ void imprimir(Lista *lista)
 {
     for(int i = 0; i < lista->tamanho; i++)
         printf("%d ", lista->valores[i]);
+    printf("\n");
 }
 
 void inserir(Lista *lista, int x)
 {
-
-}
-
-int busca_linear(Lista *lista, int x)
-{
-    //retorna o indice da posicao que esta o elemento ou -1 se nao existe na lista
-    for(int i = 0; i < lista->tamanho; i++)
-        if(x == lista->valores[i])
-            return i;
-    return -1;
+    if(lista->tamanho == lista->capacidade)
+        lista->capacidade *= 2;
+    if(lista->ordenada)
+    {
+        int indice_colocado = 0;
+        for(int i = 0; i < lista->tamanho; i++)
+        {
+            if(lista->valores[i] == x)
+            {
+                printf("elemento ja esta na lista.\n");
+                exit(1);
+            }
+            if(x < lista->valores[i])
+            {
+                indice_colocado = i;
+                break;
+            }
+        }
+        for(int i = lista->tamanho; i > indice_colocado; i--)
+            lista->valores[i] = lista->valores[i - 1];
+        lista->valores[indice_colocado] = x;
+    }
+    else
+        lista->valores[lista->tamanho] = x;
+    lista->tamanho++;
 }
 
 void remover(Lista *lista, int x)
@@ -74,7 +90,16 @@ void remover(Lista *lista, int x)
             exit(1);
         }
     }
-    lista->tamanho -= 1;
+    lista->tamanho--;
+}
+
+int busca_linear(Lista *lista, int x)
+{
+    //retorna o indice da posicao que esta o elemento ou -1 se nao existe na lista
+    for(int i = 0; i < lista->tamanho; i++)
+        if(x == lista->valores[i])
+            return i;
+    return -1;
 }
 
 int busca_binaria(Lista *lista, int x)
@@ -98,3 +123,7 @@ int busca_binaria(Lista *lista, int x)
     printf("elemento nao esta na lista.\n");
     exit(1);
 }
+
+int busca_recursiva(Lista *lista, int x)
+{
+    
