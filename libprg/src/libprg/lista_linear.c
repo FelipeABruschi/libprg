@@ -62,6 +62,8 @@ void inserir(Lista *lista, int x)
                 indice_colocado = i;
                 break;
             }
+            else
+                indice_colocado = lista->tamanho;
         }
         for(int i = lista->tamanho; i > indice_colocado; i--)
             lista->valores[i] = lista->valores[i - 1];
