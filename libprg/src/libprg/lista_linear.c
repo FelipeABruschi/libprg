@@ -126,6 +126,8 @@ int busca_binaria(Lista *lista, int x)
     exit(1);
 }
 
-int busca_recursiva(Lista *lista, int x)
+int busca_bin_rec(Lista *lista, int x, int inicio, int final)
 {
-    
+
+
+}
