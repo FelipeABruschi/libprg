@@ -21,5 +21,6 @@ void inserir(Lista *lista, int x);
 void remover(Lista *lista, int x);
 int busca_linear(Lista *lista, int x);
 int busca_binaria(Lista *lista, int x);
+int busca_bin_rec(Lista *lista, int x, int inicio, int final);
 
 #endif
