@@ -129,6 +129,7 @@ int busca_binaria(Lista *lista, int x)
 int busca_bin_rec(Lista *lista, int x, int inicio, int final)
 {
     if(lista->ordenada)
+    {
         if(inicio <= final)
         {
             int meio = inicio + (final - inicio) / 2;
@@ -137,8 +138,9 @@ int busca_bin_rec(Lista *lista, int x, int inicio, int final)
             else if(lista->valores[meio] < x)
                 return busca_bin_rec(lista, x, meio + 1, final);
             else
-                return busca_bin_rec(lista, x, inicio, meio - 1);      
+                return busca_bin_rec(lista, x, inicio, meio - 1);
         }
+    }
     else
         return -1; // retorna -1 se a lista é nao ordenada.
     printf("elemento nao esta na lista.\n");
