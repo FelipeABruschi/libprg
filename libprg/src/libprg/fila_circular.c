@@ -46,7 +46,7 @@ void enfileirar(Fila *fila, int x)
     fila->tamanho++;
 }
 
-void desenfileirar(Fila *fila)
+int desenfileirar(Fila *fila)
 {
     if(fila->inicio == fila->capacidade - 1)
         fila->inicio = 0;
@@ -61,7 +61,7 @@ void desenfileirar(Fila *fila)
     fila->tamanho--;
 }
 
-int inicio(Fila *fila)
+int getinicio(Fila *fila)
 {
     if(fila->tamanho == 0)
     {
@@ -72,7 +72,7 @@ int inicio(Fila *fila)
     //retorna o valor que esta no inicio da fila
 }
 
-int fim(Fila *fila)
+int getfim(Fila *fila)
 {
     if(fila->tamanho == 0)
     {
@@ -83,13 +83,13 @@ int fim(Fila *fila)
     //retorna o valor que esta no fim da fila
 }
 
-int tamanho(Fila *fila)
+int gettamanho(Fila *fila)
 {
     return fila->tamanho;
     //retorna o total de elementos da fila
 }
 
-bool cheia(Fila *fila)
+bool isCheia(Fila *fila)
 {
     if(fila->tamanho == fila->capacidade)
         return true;
@@ -97,7 +97,7 @@ bool cheia(Fila *fila)
         return false;
 }
 
-bool vazia(Fila *fila)
+bool isVazia(Fila *fila)
 {
     if(fila->tamanho == 0)
         return true;

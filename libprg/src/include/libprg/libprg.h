@@ -29,11 +29,11 @@ typedef struct Fila Fila;
 Fila *criar_fila(int capacidade);
 void imprimir_fila(Fila *fila);
 void enfileirar(Fila *fila, int x);
-void desenfileirar(Fila *fila);
-int inicio(Fila *fila);
-int fim(Fila *fila);
-int tamanho(Fila *fila);
-bool cheia(Fila *fila);
-bool vazia(Fila *fila);
+int desenfileirar(Fila *fila);
+int getinicio(Fila *fila);
+int getfim(Fila *fila);
+int gettamanho(Fila *fila);
+bool isCheia(Fila *fila);
+bool isVazia(Fila *fila);
 
 #endif
