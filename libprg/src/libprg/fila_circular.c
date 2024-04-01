@@ -14,15 +14,17 @@ typedef struct Fila
 Fila *criar_fila(int capacidade)
 {
     Fila *fila = (Fila *) malloc(sizeof(Fila));
-
+    if(fila == NULL)
+    {
+        printf("erro na alocação.\n");
+        exit(1);
+    }
     fila->valores = (int *) malloc(capacidade * sizeof(int));
-
     if(fila->valores == NULL)
     {
         printf("erro na alocação.\n");
         exit(1);
     }
-
     fila->inicio = 0;
     fila->fim = 0;
     fila->tamanho = 0;
@@ -40,7 +42,7 @@ void imprimir_fila(Fila *fila)
 
 void enfileirar(Fila *fila, int x)
 {
-    fila->valores[fila->fim] = x;
+    fila->valores[fila->fim % fila->capacidade] = x;
     fila->fim++;
 
     fila->tamanho++;
@@ -79,6 +81,9 @@ int getfim(Fila *fila)
         printf("fila está vazia");
         exit(1);
     }
+    if(fila->fim == 0)
+        return fila->valores[fila->capacidade - 1];
+
     return fila->valores[fila->fim - 1];
     //retorna o valor que esta no fim da fila
 }
@@ -86,7 +91,6 @@ int getfim(Fila *fila)
 int gettamanho(Fila *fila)
 {
     return fila->tamanho;
-    //retorna o total de elementos da fila
 }
 
 bool isCheia(Fila *fila)

@@ -15,11 +15,15 @@ Lista *criar_lista()
 {
     Lista *lista = (Lista *) malloc(sizeof(Lista));
 
-    lista->valores = (int *) malloc (CAPACIDADE_INICIAL * sizeof (int));
-
-    if(lista->valores == NULL)
+    if(lista == NULL)
     {
         printf("Erro na alocação.\n");
+        exit(1);
+    }
+    lista->valores = (int *) malloc (CAPACIDADE_INICIAL * sizeof (int));
+    if(lista->valores == NULL)
+    {
+        printf("erro na alocação.\n");
         exit(1);
     }
     lista->capacidade = CAPACIDADE_INICIAL;
@@ -46,7 +50,10 @@ void imprimir(Lista *lista)
 void inserir(Lista *lista, int x)
 {
     if(lista->tamanho == lista->capacidade)
+    {
         lista->capacidade *= 2;
+        lista->valores = (int *) realloc(lista->valores, lista->capacidade * sizeof(int));
+    }
     if(lista->ordenada)
     {
         int indice_colocado = 0;
