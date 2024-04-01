@@ -53,6 +53,11 @@ void inserir(Lista *lista, int x)
     {
         lista->capacidade *= 2;
         lista->valores = (int *) realloc(lista->valores, lista->capacidade * sizeof(int));
+        if(lista->valores == NULL)
+        {
+            printf("falha na realocacao de memoria ao aumentar capacidade da lista.\n");
+            exit(1);
+        }
     }
     if(lista->ordenada)
     {
