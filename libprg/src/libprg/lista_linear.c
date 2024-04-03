@@ -1,7 +1,6 @@
 #include "libprg/libprg.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 #define CAPACIDADE_INICIAL 10
 
 typedef struct Lista{

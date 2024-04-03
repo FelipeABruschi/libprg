@@ -32,8 +32,16 @@ void enfileirar(Fila *fila, int x);
 int desenfileirar(Fila *fila);
 int getinicio(Fila *fila);
 int getfim(Fila *fila);
-int gettamanho(Fila *fila);
+int gettamanho_fila(Fila *fila);
 bool isCheia(Fila *fila);
-bool isVazia(Fila *fila);
+bool isFilaVazia(Fila *fila);
+
+typedef struct Pilha Pilha;
+
+Pilha *criar_pilha();
+void empilhar(Pilha *pilha, char c);
+char desempilhar(Pilha *pilha);
+int gettamanho_pilha(Pilha *pilha);
+bool isPilhaVazia(Pilha *pilha);
 
 #endif

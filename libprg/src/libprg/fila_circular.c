@@ -44,7 +44,7 @@ void enfileirar(Fila *fila, int x)
 {
     if(fila->tamanho == fila->capacidade)
     {
-        printf("fila ja esta cheia.\n");
+        printf("fila esta cheia.\n");
         exit(1);
     }
     fila->valores[fila->fim % fila->capacidade] = x;
@@ -55,7 +55,11 @@ void enfileirar(Fila *fila, int x)
 
 int desenfileirar(Fila *fila)
 {
-
+    if(fila->tamanho == 0)
+    {
+        printf("fila esta vazia.\n");
+        return -1;
+    }
 }
 
 int getinicio(Fila *fila)
@@ -63,7 +67,7 @@ int getinicio(Fila *fila)
     if(fila->tamanho == 0)
     {
         printf("fila está vazia");
-        exit(1);
+        return -1;
     }
     return fila->valores[fila->inicio];
     //retorna o valor que esta no inicio da fila
@@ -74,7 +78,7 @@ int getfim(Fila *fila)
     if(fila->tamanho == 0)
     {
         printf("fila está vazia");
-        exit(1);
+        return -1;
     }
     if(fila->fim % fila->capacidade == 0)
         return fila->valores[fila->capacidade - 1];
