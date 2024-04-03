@@ -24,6 +24,9 @@ int busca_linear(Lista *lista, int x);
 int busca_binaria(Lista *lista, int x);
 int busca_bin_rec(Lista *lista, int x, int inicio, int final);
 
+typedef struct ctt ctt;
+typedef struct Lista_contatos Lista_contatos;
+
 typedef struct Fila Fila;
 
 Fila *criar_fila(int capacidade);

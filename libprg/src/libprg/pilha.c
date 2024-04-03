@@ -38,8 +38,13 @@ void empilhar(Pilha *pilha, char c)
 {
     if(pilha->tamanho == pilha->capacidade)
     {
-        printf("pilha esta cheia.\n");
-        exit(1);
+        pilha->capacidade *= 2;
+        pilha->caracteres = (char *) realloc(pilha->caracteres, pilha->capacidade * sizeof(char));
+        if(pilha->caracteres == NULL)
+        {
+            printf("erro na realocacao ao aumentar a capacidade da pilha.\n");
+            exit(1);
+        }
     }
     pilha->topo++;
     pilha->caracteres[pilha->topo] = c;
@@ -53,8 +58,10 @@ char desempilhar(Pilha *pilha)
         printf("pilha esta vazia.\n");
         exit(1);
     }
+    char c = pilha->caracteres[pilha->topo];
     pilha->topo--;
     pilha->tamanho--;
+    return c;
 }
 
 int gettamanho_pilha(Pilha *pilha)
@@ -64,6 +71,9 @@ int gettamanho_pilha(Pilha *pilha)
 
 bool isPilhaVazia(Pilha *pilha)
 {
-
+    if(pilha->tamanho == 0)
+        return true;
+    else
+        return false;
 }
 
