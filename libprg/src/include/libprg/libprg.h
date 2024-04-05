@@ -27,6 +27,10 @@ int busca_bin_rec(Lista *lista, int x, int inicio, int final);
 typedef struct ctt ctt;
 typedef struct Lista_contatos Lista_contatos;
 
+Lista_contatos *criar_lista_ctt();
+void imprimir_ctt(Lista_contatos *lista);
+void add_contato(Lista_contatos *lista, ctt novo_ctt);
+
 typedef struct Fila Fila;
 
 Fila *criar_fila(int capacidade);
