@@ -1,6 +1,8 @@
 #include "libprg/libprg.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
 #define CAPACIDADE_INICIAL 10
 
 typedef struct ctt
@@ -48,7 +50,7 @@ void imprimir_ctt(Lista_contatos *lista)
     }
 }
 
-void add_contato(Lista_contatos *lista, ctt novo_ctt)
+void add_ctt(Lista_contatos *lista, ctt novo_ctt)
 {
     if(lista->tamanho == lista->capacidade)
     {
@@ -63,4 +65,24 @@ void add_contato(Lista_contatos *lista, ctt novo_ctt)
     lista->contatos[lista->tamanho] = novo_ctt;
     lista->tamanho++;
 }
+
+int excluir_ctt(Lista_contatos *lista, char *s)
+{
+    for(int i = 0; i < lista->tamanho; i++)
+    {
+        if(strcasecmp(lista->contatos[i].nome, s) == 0)
+        {
+            lista->contatos[i] = lista->contatos[lista->tamanho - 1];
+            lista->tamanho--;
+            return i;
+        }
+    }
+}
+
+int busca_ctt(Lista_contatos *lista, char *s)
+{
+
+}
+
+
 
