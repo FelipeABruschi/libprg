@@ -68,19 +68,18 @@ void add_ctt(Lista_contatos *lista, ctt novo_ctt)
 int excluir_ctt(Lista_contatos *lista, char *s)
 {
     for(int i = 0; i < lista->tamanho; i++)
-    {
-        if(strcasecmp(lista->contatos[i].nome, s) == 0)
+        if(strcmp(lista->contatos[i].nome, s) == 0)
         {
             lista->contatos[i] = lista->contatos[lista->tamanho - 1];
             lista->tamanho--;
-            return i;
+            return 0;
         }
-    }
+    return 1;
 }
 
-Lista_contatos *busca_ctt(Lista_contatos *lista, char *s)
+Lista_contatos* busca_ctt(Lista_contatos *lista, char *s)
 {
-    Lista_contatos *encontrados;
+    Lista_contatos *encontrados = criar_lista_ctt();
     int tamanho_string = strlen(s);
 
     for(int i = 0; i < lista->tamanho; i++)
@@ -91,12 +90,28 @@ Lista_contatos *busca_ctt(Lista_contatos *lista, char *s)
         {
             for(int j = 0; j < tamanho_string; j++)
                 if(s[j] != lista->contatos[i].nome[j])
-                    break;
+                    goto fim;
+            if(encontrados->tamanho == encontrados->capacidade)
+            {
+                encontrados->capacidade *= 2;
+                encontrados->contatos = (ctt *) realloc(encontrados->contatos, encontrados->capacidade * sizeof(ctt));
+            }
+            encontrados->contatos[encontrados->tamanho] = lista->contatos[i];
+            encontrados->tamanho++;
         }
-
+        fim:
     }
-
+    return encontrados;
 }
+
+ctt* edita_ctt(Lista_contatos *lista, char *s)
+{
+    for(int i = 0; i < lista->tamanho; i++)
+        if(strcmp(lista->contatos[i].nome, s) == 0)
+            return &lista->contatos[i];
+    return NULL;
+}
+
 
 
 
