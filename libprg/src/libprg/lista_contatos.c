@@ -43,10 +43,9 @@ void imprimir_ctt(Lista_contatos *lista)
 {
     for(int i = 0; i < lista->tamanho; i++)
     {
-        printf("%s ", lista->contatos[i].nome);
-        printf("%d ", lista->contatos[i].numero);
-        printf("%s ", lista->contatos[i].email);
-        printf("\n");
+        printf("%s\t", lista->contatos[i].nome);
+        printf("%d\t", lista->contatos[i].numero);
+        printf("%s\n", lista->contatos[i].email);
     }
 }
 
@@ -79,8 +78,23 @@ int excluir_ctt(Lista_contatos *lista, char *s)
     }
 }
 
-int busca_ctt(Lista_contatos *lista, char *s)
+Lista_contatos *busca_ctt(Lista_contatos *lista, char *s)
 {
+    Lista_contatos *encontrados;
+    int tamanho_string = strlen(s);
+
+    for(int i = 0; i < lista->tamanho; i++)
+    {
+        if(strlen(lista->contatos[i].nome) < tamanho_string)
+            continue;
+        else
+        {
+            for(int j = 0; j < tamanho_string; j++)
+                if(s[j] != lista->contatos[i].nome[j])
+                    break;
+        }
+
+    }
 
 }
 

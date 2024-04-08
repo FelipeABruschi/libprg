@@ -31,7 +31,7 @@ Lista_contatos *criar_lista_ctt();
 void imprimir_ctt(Lista_contatos *lista);
 void add_contato(Lista_contatos *lista, ctt novo_ctt);
 int excluir_ctt(Lista_contatos *lista, char *s);
-int busca_ctt(Lista_contatos *lista, char *s);
+Lista_contatos *busca_ctt(Lista_contatos *lista, char *s);
 void edita_ctt(Lista_contatos *lista, char *s);
 
 typedef struct Fila Fila;
