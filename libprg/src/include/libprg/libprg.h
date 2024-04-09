@@ -24,8 +24,19 @@ int busca_linear(Lista *lista, int x);
 int busca_binaria(Lista *lista, int x);
 int busca_bin_rec(Lista *lista, int x, int inicio, int final);
 
-typedef struct ctt ctt;
-typedef struct Lista_contatos Lista_contatos;
+typedef struct ctt
+{
+    char nome[50];
+    int numero;
+    char email[50];
+}ctt;
+
+typedef struct Lista_contatos
+{
+    ctt *contatos;
+    int tamanho;
+    int capacidade;
+}Lista_contatos;
 
 Lista_contatos *criar_lista_ctt();
 void imprimir_ctt(Lista_contatos *lista);

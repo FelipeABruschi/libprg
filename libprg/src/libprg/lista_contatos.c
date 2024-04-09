@@ -5,20 +5,6 @@
 
 #define CAPACIDADE_INICIAL 10
 
-typedef struct ctt
-{
-    char nome[50];
-    int numero;
-    char email[50];
-}ctt;
-
-typedef struct Lista_contatos
-{
-    ctt *contatos;
-    int tamanho;
-    int capacidade;
-}Lista_contatos;
-
 Lista_contatos *criar_lista_ctt()
 {
     Lista_contatos *lista = (Lista_contatos *) malloc(sizeof(Lista_contatos));
