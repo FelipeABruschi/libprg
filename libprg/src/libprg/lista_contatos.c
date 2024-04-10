@@ -60,6 +60,7 @@ int excluir_ctt(Lista_contatos *lista, char *nome)
             lista->tamanho--;
             return 0;
         }
+    //contato nao existe
     return 1;
 }
 
@@ -97,7 +98,6 @@ ctt* edita_ctt(Lista_contatos *lista, char *nome)
             return &lista->contatos[i];
     return NULL;
 }
-
 
 
 
