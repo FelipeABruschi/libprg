@@ -30,7 +30,7 @@ void imprimir_ctt(Lista_contatos *lista)
     for(int i = 0; i < lista->tamanho; i++)
     {
         printf("%s\t", lista->contatos[i].nome);
-        printf("%d\t", lista->contatos[i].numero);
+        printf("%s\t", lista->contatos[i].numero);
         printf("%s\n", lista->contatos[i].email);
     }
 }
@@ -54,7 +54,7 @@ void add_ctt(Lista_contatos *lista, ctt novo_ctt)
 int excluir_ctt(Lista_contatos *lista, char *nome)
 {
     for(int i = 0; i < lista->tamanho; i++)
-        if(strcmp(lista->contatos[i].nome, nome) == 0)
+        if(strcasecmp(lista->contatos[i].nome, nome) == 0)
         {
             lista->contatos[i] = lista->contatos[lista->tamanho - 1];
             lista->tamanho--;
@@ -94,7 +94,7 @@ Lista_contatos* busca_ctt(Lista_contatos *lista, char *nome)
 ctt* edita_ctt(Lista_contatos *lista, char *nome)
 {
     for(int i = 0; i < lista->tamanho; i++)
-        if(strcmp(lista->contatos[i].nome, nome) == 0)
+        if(strcasecmp(lista->contatos[i].nome, nome) == 0)
             return &lista->contatos[i];
     return NULL;
 }

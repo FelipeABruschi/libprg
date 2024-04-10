@@ -27,7 +27,7 @@ int busca_bin_rec(Lista *lista, int x, int inicio, int final);
 typedef struct ctt
 {
     char nome[50];
-    int numero;
+    char numero[15];
     char email[50];
 }ctt;
 
