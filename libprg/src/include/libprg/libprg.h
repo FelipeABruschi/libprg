@@ -1,6 +1,8 @@
 #ifndef LIBPRG_LIBPRG_H
 #define LIBPRG_LIBPRG_H
 #include <stdbool.h>
+#include <stdlib.h>
+
 
 typedef struct {
     double value;

@@ -1,6 +1,5 @@
 #include "libprg/libprg.h"
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
 #define CAPACIDADE_INICIAL 10
@@ -66,28 +65,11 @@ int excluir_ctt(Lista_contatos *lista, char *nome)
 
 Lista_contatos* busca_ctt(Lista_contatos *lista, char *nome)
 {
-    Lista_contatos *encontrados = criar_lista_ctt();
-    int tamanho_string = strlen(nome);
+    Lista_contatos* encontrados = criar_lista_ctt();
 
     for(int i = 0; i < lista->tamanho; i++)
-    {
-        if(strlen(lista->contatos[i].nome) < tamanho_string)
-            continue;
-        else
-        {
-            for(int j = 0; j < tamanho_string; j++)
-                if(nome[j] != lista->contatos[i].nome[j])
-                    goto fim;
-            if(encontrados->tamanho == encontrados->capacidade)
-            {
-                encontrados->capacidade *= 2;
-                encontrados->contatos = (ctt *) realloc(encontrados->contatos, encontrados->capacidade * sizeof(ctt));
-            }
-            encontrados->contatos[encontrados->tamanho] = lista->contatos[i];
-            encontrados->tamanho++;
-        }
-        fim:
-    }
+        if(strcasestr(lista->contatos[i].nome, nome) != NULL)
+            add_ctt(encontrados, lista->contatos[i]);
     return encontrados;
 }
 
