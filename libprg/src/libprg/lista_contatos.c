@@ -34,7 +34,7 @@ void imprimir_ctt(Lista_contatos *lista)
     }
 }
 
-void add_ctt(Lista_contatos *lista, ctt novo_ctt)
+void add_contato(Lista_contatos *lista, ctt novo_ctt)
 {
     if(lista->tamanho == lista->capacidade)
     {
@@ -69,7 +69,7 @@ Lista_contatos* busca_ctt(Lista_contatos *lista, char *nome)
 
     for(int i = 0; i < lista->tamanho; i++)
         if(strcasestr(lista->contatos[i].nome, nome) != NULL)
-            add_ctt(encontrados, lista->contatos[i]);
+            add_contato(encontrados, lista->contatos[i]);
     return encontrados;
 }
 
