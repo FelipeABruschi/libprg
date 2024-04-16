@@ -10,7 +10,7 @@ typedef struct Lista{
     bool ordenada;
 } Lista;
 
-Lista *criar_lista()
+Lista *criar_lista(bool ordenada)
 {
     Lista *lista = (Lista *) malloc(sizeof(Lista));
 
@@ -27,15 +27,8 @@ Lista *criar_lista()
     }
     lista->capacidade = CAPACIDADE_INICIAL;
     lista->tamanho = 0;
-    lista->ordenada = false;
-
-    return lista;
-}
-
-Lista *criar_lista_ord()
-{
-    Lista *lista = criar_lista();
-    lista->ordenada = true;
+    lista->ordenada = ordenada;
+    
     return lista;
 }
 
