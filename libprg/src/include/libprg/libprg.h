@@ -17,8 +17,7 @@ result_t compute(double a, double b, operation_t op);
 
 typedef struct Lista Lista;
 
-Lista *criar_lista();
-Lista *criar_lista_ord();
+Lista *criar_lista(bool ordenada);
 void imprimir(Lista *lista);
 void inserir(Lista *lista, int x);
 void remover(Lista *lista, int x);
