@@ -26,6 +26,24 @@ int busca_linear(Lista *lista, int x);
 int busca_binaria(Lista *lista, int x);
 int busca_bin_rec(Lista *lista, int x, int inicio, int final);
 
+typedef struct no
+{
+    int valor;
+    struct no* proximo;
+}no;
+
+typedef struct Lista_encadeada
+{
+    no* inicio;
+    int tamanho;
+    bool ordenada;
+}Lista_encadeada;
+
+Lista_encadeada* criar_lista_encadeada(bool ordenada);
+void inserir_no();
+void remover_no();
+int buscar_no();
+
 typedef struct ctt
 {
     char nome[50];
