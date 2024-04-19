@@ -3,16 +3,16 @@
 #include <stdlib.h>
 #define CAPACIDADE_INICIAL 10
 
-typedef struct Lista{
+typedef struct Lista_linear{
     int *valores;
     int tamanho;
     int capacidade;
     bool ordenada;
-} Lista;
+} Lista_linear;
 
-Lista *criar_lista(bool ordenada)
+Lista_linear *criar_lista(bool ordenada)
 {
-    Lista *lista = (Lista *) malloc(sizeof(Lista));
+    Lista_linear *lista = (Lista_linear *) malloc(sizeof(Lista_linear));
 
     if(lista == NULL)
     {
@@ -32,14 +32,14 @@ Lista *criar_lista(bool ordenada)
     return lista;
 }
 
-void imprimir(Lista *lista)
+void imprimir(Lista_linear *lista)
 {
     for(int i = 0; i < lista->tamanho; i++)
         printf("%d ", lista->valores[i]);
     printf("\n");
 }
 
-void inserir(Lista *lista, int x)
+void inserir(Lista_linear *lista, int x)
 {
     if(lista->tamanho == lista->capacidade)
     {
@@ -78,7 +78,7 @@ void inserir(Lista *lista, int x)
     lista->tamanho++;
 }
 
-void remover(Lista *lista, int x)
+void remover(Lista_linear *lista, int x)
 {
     int indice_removido = busca_binaria(lista, x);
 
@@ -99,7 +99,7 @@ void remover(Lista *lista, int x)
     lista->tamanho--;
 }
 
-int busca_linear(Lista *lista, int x)
+int busca_linear(Lista_linear *lista, int x)
 {
     //retorna o indice da posicao que esta o elemento ou -1 se nao existe na lista
     for(int i = 0; i < lista->tamanho; i++)
@@ -108,7 +108,7 @@ int busca_linear(Lista *lista, int x)
     return -1;
 }
 
-int busca_binaria(Lista *lista, int x)
+int busca_binaria(Lista_linear *lista, int x)
 {
     // essa funçao vai retornar o indice do elemento encontrado
     int meio, final = lista->tamanho - 1, inicio = 0;
@@ -130,7 +130,7 @@ int busca_binaria(Lista *lista, int x)
     exit(1);
 }
 
-int busca_bin_rec(Lista *lista, int x, int inicio, int final)
+int busca_bin_rec(Lista_linear *lista, int x, int inicio, int final)
 {
     if(lista->ordenada)
     {

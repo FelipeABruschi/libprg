@@ -15,15 +15,15 @@ result_t sub(double a, double b);
 result_t sum(double a, double b);
 result_t compute(double a, double b, operation_t op);
 
-typedef struct Lista Lista;
+typedef struct Lista_linear Lista_linear;
 
-Lista *criar_lista(bool ordenada);
-void imprimir(Lista *lista);
-void inserir(Lista *lista, int x);
-void remover(Lista *lista, int x);
-int busca_linear(Lista *lista, int x);
-int busca_binaria(Lista *lista, int x);
-int busca_bin_rec(Lista *lista, int x, int inicio, int final);
+Lista_linear *criar_lista(bool ordenada);
+void imprimir(Lista_linear *lista);
+void inserir(Lista_linear *lista, int x);
+void remover(Lista_linear *lista, int x);
+int busca_linear(Lista_linear *lista, int x);
+int busca_binaria(Lista_linear *lista, int x);
+int busca_bin_rec(Lista_linear *lista, int x, int inicio, int final);
 
 typedef struct ctt
 {
