@@ -66,11 +66,21 @@ char desempilhar(Pilha *pilha);
 int gettamanho_pilha(Pilha *pilha);
 bool isPilhaVazia(Pilha *pilha);
 
-typedef struct no no;
-typedef struct Lista_encadeada Lista_encadeada;
+typedef struct no
+{
+    int valor;
+    struct no* proximo;
+}no;
+
+typedef struct Lista_encadeada
+{
+    no* inicio;
+    int tamanho;
+    bool ordenada;
+}Lista_encadeada;
 
 Lista_encadeada* criar_lista_encadeada(bool ordenada);
-void inserir_no(Lista_encadeada* lista, int valor);
+void inserir_no(Lista_encadeada *lista, int valor);
 void remover_no();
 int buscar_no();
 void destruir();

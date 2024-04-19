@@ -1,17 +1,5 @@
 #include "libprg/libprg.h"
-
-typedef struct no
-{
-    int valor;
-    struct no* proximo;
-}no;
-
-typedef struct Lista_encadeada
-{
-    no* inicio;
-    int tamanho;
-    bool ordenada;
-}Lista_encadeada;
+#include <stdio.h>
 
 Lista_encadeada* criar_lista_encadeada(bool ordenada)
 {
@@ -32,11 +20,11 @@ void inserir_no(Lista_encadeada* lista, int valor)
     no *novo = (no*) malloc(sizeof(no));
     if(novo == NULL)
     {
-
+        printf("erro ao criar novo nó.\n");
         exit(1);
     }
     novo->valor = valor;
-    novo->proximo = NULL;
+    novo->proximo = lista->inicio;
     lista->inicio = novo;
     lista->tamanho++;
 }
