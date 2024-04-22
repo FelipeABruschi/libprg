@@ -81,8 +81,8 @@ typedef struct Lista_encadeada
 
 void criar_lista_encadeada(Lista_encadeada *lista, bool ordenada);
 void inserir_no(Lista_encadeada *lista, int valor);
-void remover_no();
-int buscar_no();
+bool remover_no(Lista_encadeada *lista, int valor);
+no* buscar_no(Lista_encadeada *lista, int valor);
 void destruir();
 
 #endif

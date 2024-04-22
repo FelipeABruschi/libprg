@@ -31,3 +31,30 @@ void inserir_no(Lista_encadeada* lista, int valor)
     lista->tamanho++;
 }
 
+bool remover_no(Lista_encadeada *lista, int valor)
+{
+    no *aux = buscar_no(lista, valor);
+
+    if(aux == NULL)
+        return false;
+    else
+        aux = aux->proximo->proximo;
+}
+
+no* buscar_no(Lista_encadeada *lista, int valor)
+{
+    no *aux = lista->inicio;
+
+    if(aux->valor == valor)
+        return aux;
+    for(int i = 1; i < lista->tamanho; i++)
+    {
+        if(aux->proximo->valor == valor)
+            return aux;
+        else
+            aux = aux->proximo;
+    }
+    return NULL;
+    //retorna o ponteiro para o nó ou NULL se o valor nao existe na lista
+}
+
