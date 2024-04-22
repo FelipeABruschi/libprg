@@ -16,9 +16,18 @@ void inserir_no(Lista_encadeada* lista, int valor)
         printf("erro ao criar novo nó.\n");
         exit(1);
     }
+
     novo->valor = valor;
-    novo->proximo = lista->inicio;
-    lista->inicio = novo;
+    novo->proximo = NULL;
+    if(lista->tamanho == 0)
+        lista->inicio = novo;
+    else
+    {
+        no *aux = lista->inicio;
+        while(aux != NULL)
+            aux = aux->proximo;
+        aux = novo;
+    }
     lista->tamanho++;
 }
 
