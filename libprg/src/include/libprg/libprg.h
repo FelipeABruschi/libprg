@@ -79,7 +79,7 @@ typedef struct Lista_encadeada
     bool ordenada;
 }Lista_encadeada;
 
-Lista_encadeada* criar_lista_encadeada(bool ordenada);
+void criar_lista_encadeada(Lista_encadeada *lista, bool ordenada);
 void inserir_no(Lista_encadeada *lista, int valor);
 void remover_no();
 int buscar_no();
