@@ -1,18 +1,11 @@
 #include "libprg/libprg.h"
 #include <stdio.h>
 
-Lista_encadeada* criar_lista_encadeada(bool ordenada)
+void criar_lista_encadeada(Lista_encadeada *lista, bool ordenada)
 {
-    Lista_encadeada* lista = (Lista_encadeada *) malloc(sizeof(Lista_encadeada));
-
-    if(lista == NULL)
-        return lista;
-
     lista->inicio = NULL;
     lista->tamanho = 0;
     lista->ordenada = ordenada;
-
-    return lista;
 }
 
 void inserir_no(Lista_encadeada* lista, int valor)
