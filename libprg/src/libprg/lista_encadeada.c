@@ -18,16 +18,8 @@ void inserir_no(Lista_encadeada* lista, int valor)
     }
 
     novo->valor = valor;
-    novo->proximo = NULL;
-    if(lista->tamanho == 0)
-        lista->inicio = novo;
-    else
-    {
-        no *aux = lista->inicio;
-        while(aux != NULL)
-            aux = aux->proximo;
-        aux = novo;
-    }
+    novo->proximo = lista->inicio;
+    lista->inicio = novo;
     lista->tamanho++;
 }
 
