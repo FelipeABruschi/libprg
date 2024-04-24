@@ -25,23 +25,44 @@ void inserir_no(Lista_encadeada* lista, int valor)
 
 bool remover_no(Lista_encadeada *lista, int valor)
 {
-    no *aux = buscar_no(lista, valor);
+    no *aux1 = lista->inicio;
+    no *aux2 = aux1->proximo;
+    bool result;
 
-    if(aux == NULL)
-        return false;
+    if(aux1->valor == valor)
+    {
+        lista->inicio = aux1->proximo;
+        free(aux1);
+        result = true;
+    }
     else
-        aux = aux->proximo->proximo;
+    {
+        while(aux2)
+        {
+            if(aux2->valor == valor)
+            {
+                aux1 = aux2->proximo;
+                break;
+            }
+            else
+            {
+                aux1 = aux2;
+                aux2 = aux2->proximo;
+            }
+        }
+        free(aux2);
+    }
+
+
 }
 
 no* buscar_no(Lista_encadeada *lista, int valor)
 {
     no *aux = lista->inicio;
 
-    if(aux->valor == valor)
-        return aux;
-    for(int i = 1; i < lista->tamanho; i++)
+    while(aux)
     {
-        if(aux->proximo->valor == valor)
+        if(aux->valor == valor)
             return aux;
         else
             aux = aux->proximo;
