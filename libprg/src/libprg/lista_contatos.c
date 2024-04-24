@@ -28,9 +28,9 @@ void imprimir_ctt(Lista_contatos *lista)
 {
     for(int i = 0; i < lista->tamanho; i++)
     {
-        printf("%s", lista->contatos[i].nome);
-        printf("%s", lista->contatos[i].numero);
-        printf("%s\n", lista->contatos[i].email);
+        printf("%s\n", lista->contatos[i].nome);
+        printf("%s\n", lista->contatos[i].numero);
+        printf("%s\n\n", lista->contatos[i].email);
     }
 }
 
