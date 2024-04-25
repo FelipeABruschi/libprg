@@ -81,5 +81,27 @@ ctt* edita_ctt(Lista_contatos *lista, char *nome)
     return NULL;
 }
 
+void salvar_arq(Lista_contatos *lista)
+{
+    FILE *arq = fopen("contatos.bin", "wb");
+    if(arq == NULL)
+        printf("não foi possivel abrir o arquivo.\n);
+    else
+    {
+        for(int i = 0; i < lista->tamanho; i++)
+        {
+        fprintf(arq, "%s", lista->contatos[i].nome);
+        fprintf(arq, "%s", lista->contatos[i].numero);
+        fprintf(arq, "%s", lista->contatos[i].email);
+        }
+        fclose(arq);
+    }
+}
+
+void ler_arq()
+{
+    FILE *arq = fopen("contatos.bin", "wb");
+    
+}
 
 
