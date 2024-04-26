@@ -45,6 +45,9 @@ void add_contato(Lista_contatos *lista, ctt novo_ctt);
 int excluir_ctt(Lista_contatos *lista, char *s);
 Lista_contatos* busca_ctt(Lista_contatos *lista, char *s);
 ctt* edita_ctt(Lista_contatos *lista, char *s);
+void salvar_arq(Lista_contatos *lista);
+bool ler_arq(Lista_contatos *lista);
+void criar_arq(Lista_contatos *lista);
 
 typedef struct Fila Fila;
 
