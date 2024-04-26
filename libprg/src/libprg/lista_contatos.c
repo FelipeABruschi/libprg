@@ -84,24 +84,27 @@ ctt* edita_ctt(Lista_contatos *lista, char *nome)
 void salvar_arq(Lista_contatos *lista)
 {
     FILE *arq = fopen("contatos.bin", "wb");
-    if(arq == NULL)
-        printf("não foi possivel abrir o arquivo.\n);
-    else
+    if(arq)
     {
-        for(int i = 0; i < lista->tamanho; i++)
-        {
-        fprintf(arq, "%s", lista->contatos[i].nome);
-        fprintf(arq, "%s", lista->contatos[i].numero);
-        fprintf(arq, "%s", lista->contatos[i].email);
-        }
+        fprintf(arq, "%d\n", lista->tamanho);
+        fwrite(lista->contatos, sizeof(ctt), lista->tamanho, arq);
         fclose(arq);
     }
+    else
+        printf("nao foi possivel abrir o arquivo.\n");
 }
 
-void ler_arq()
+void ler_arq(Lista_contatos *lista)
 {
-    FILE *arq = fopen("contatos.bin", "wb");
-    
+    FILE *arq = fopen("contatos.bin", "rb");
+    if(arq)
+    {
+        fscanf(arq, "%d\n", &(lista->tamanho));
+        fread(lista->contatos, sizeof(ctt), lista->tamanho, arq);
+        fclose(arq);
+    }
+    else
+        printf("nao foi possivel abrir o arquivo.\n");
 }
 
 
