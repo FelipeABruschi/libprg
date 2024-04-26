@@ -94,7 +94,7 @@ void salvar_arq(Lista_contatos *lista)
         printf("nao foi possivel abrir o arquivo.\n");
 }
 
-bool ler_arq(Lista_contatos *lista)
+void ler_arq(Lista_contatos *lista)
 {
     FILE *arq = fopen("contatos.bin", "rb");
     if(arq)
@@ -102,16 +102,5 @@ bool ler_arq(Lista_contatos *lista)
         fscanf(arq, "%d\n", &lista->tamanho);
         fread(lista->contatos, sizeof(ctt), lista->tamanho, arq);
         fclose(arq);
-        return true;
     }
-    else
-        return false;
 }
-
-void criar_arq(Lista_contatos *lista)
-{
-    FILE *arq = fopen("contatos.bin", "wb");
-}
-
-
-
