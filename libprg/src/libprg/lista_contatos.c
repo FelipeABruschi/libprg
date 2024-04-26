@@ -103,4 +103,6 @@ void ler_arq(Lista_contatos *lista)
         fread(lista->contatos, sizeof(ctt), lista->tamanho, arq);
         fclose(arq);
     }
+    else
+        printf("nao tem arquivo para leitura.\n");
 }
