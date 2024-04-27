@@ -63,7 +63,7 @@ int excluir_ctt(Lista_contatos *lista, char *nome)
     return 1;
 }
 
-Lista_contatos* busca_ctt(Lista_contatos *lista, char *nome)
+/*Lista_contatos* busca_ctt(Lista_contatos *lista, char *nome)
 {
     Lista_contatos* encontrados = criar_lista_ctt();
 
@@ -71,7 +71,7 @@ Lista_contatos* busca_ctt(Lista_contatos *lista, char *nome)
         if(strcasestr(lista->contatos[i].nome, nome) != NULL)
             add_contato(encontrados, lista->contatos[i]);
     return encontrados;
-}
+}*/
 
 ctt* edita_ctt(Lista_contatos *lista, char *nome)
 {
