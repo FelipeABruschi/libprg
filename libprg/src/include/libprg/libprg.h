@@ -87,4 +87,11 @@ bool remover_no(Lista_encadeada *lista, int valor);
 no* buscar_no(Lista_encadeada *lista, int valor);
 void destruir();
 
+// algoritmos de ondenação
+
+void bubble_sort_cres(int *vet, int tam);
+void bubble_sort_dec(int *vet, int tam);
+void selection_sort(int *vet, int tam);
+void insertion_sort(int *vet, int tam);
+
 #endif
