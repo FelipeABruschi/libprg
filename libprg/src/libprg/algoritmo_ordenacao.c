@@ -44,7 +44,7 @@ void selection_sort(int *vet, int tam)
     for(int i = 0; i < tam - 1; i++)
     {
         int menor = i;
-        for(int j = ++i; j < tam; j++)
+        for(int j = i + 1; j < tam; j++)
             if(vet[menor] > vet[j])
                 menor = j;
         if(menor != i)
