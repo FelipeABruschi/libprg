@@ -44,3 +44,29 @@ void merge_sort(int *vet, int esquerda, int direita)
     }
 }
 
+int particao_hoare(int *vet, int inicio, int fim)
+{
+    int pivo = (vet[inicio] + vet[fim] + vet[(inicio + fim) / 2]) / 3;
+    while(inicio < fim)
+    {
+        while(inicio < fim && pivo >= vet[inicio])
+            inicio++;
+        while(inicio < fim && pivo < vet[fim])
+            fim--;
+        int aux = vet[inicio];
+        vet[inicio] = vet[fim];
+        vet[fim] = aux;
+    }
+    return inicio;
+}
+
+void quick_sort(int *vet, int inicio, int fim)
+{
+    if(inicio < fim)
+    {
+        int posicao = particao_hoare(vet, inicio, fim);
+        quick_sort(vet, inicio, posicao - 1);
+        quick_sort(vet, posicao, fim);
+    }
+}
+
