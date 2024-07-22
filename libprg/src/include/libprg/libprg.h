@@ -94,4 +94,6 @@ void bubble_sort_dec(int *vet, int tam);
 void selection_sort(int *vet, int tam);
 void insertion_sort(int *vet, int tam);
 
+void merge_sort(int *vet, int esquerda, int direita);
+
 #endif
