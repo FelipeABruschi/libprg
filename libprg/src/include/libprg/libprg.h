@@ -94,6 +94,9 @@ void bubble_sort_dec(int *vet, int tam);
 void selection_sort(int *vet, int tam);
 void insertion_sort(int *vet, int tam);
 
+// algoritmos de ordenação divisao e conquista
+
 void merge_sort(int *vet, int esquerda, int direita);
+void quick_sort(int *vet, int inicio, int fim);
 
 #endif
