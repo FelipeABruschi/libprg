@@ -99,4 +99,27 @@ void insertion_sort(int *vet, int tam);
 void merge_sort(int *vet, int esquerda, int direita);
 void quick_sort(int *vet, int inicio, int fim);
 
+typedef struct tarefa
+{
+    char descricao[50];
+    char prioridade[10];
+    char prazo[10];
+}tarefa;
+
+typedef struct Lista_tarefas
+{
+    tarefa *trf;
+    int tamanho;
+    int capacidade;
+}Lista_tarefas;
+
+Lista_tarefas *criar_lista_trf();
+void imprimir_trf(Lista_tarefas *lista);
+void add_trf(Lista_tarefas *lista, tarefa *nova_trf);
+int excluir_trf(Lista_tarefas *lista, char *s);
+Lista_tarefas* busca_trf(Lista_tarefas *lista, char *s);
+tarefa* edita_trf(Lista_tarefas *lista, char *s);
+void salvar_arq(Lista_tarefas *lista);
+void ler_arq(Lista_tarefas *lista);
+
 #endif
