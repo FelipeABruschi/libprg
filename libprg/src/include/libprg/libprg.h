@@ -104,6 +104,9 @@ typedef struct tarefa
     char descricao[50];
     char prioridade[10];
     char prazo[10];
+    char conclusao[20];
+    int status;
+    int codigo;
 }tarefa;
 
 typedef struct Lista_tarefas
@@ -114,9 +117,8 @@ typedef struct Lista_tarefas
 }Lista_tarefas;
 
 Lista_tarefas *criar_lista_trf();
-void imprimir_trf(Lista_tarefas *lista);
-void add_trf(Lista_tarefas *lista, tarefa *nova_trf);
-int excluir_trf(Lista_tarefas *lista, char *s);
+int add_trf(Lista_tarefas *lista, tarefa nova_trf);
+int excluir_trf(Lista_tarefas *lista, int id);
 Lista_tarefas* busca_trf(Lista_tarefas *lista, char *s);
 tarefa* edita_trf(Lista_tarefas *lista, char *s);
 void salvar_arq(Lista_tarefas *lista);
