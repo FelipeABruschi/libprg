@@ -122,7 +122,7 @@ int excluir_trf(Lista_tarefas *lista, int id);
 Lista_tarefas* busca_trf(Lista_tarefas *lista, char *s);
 tarefa* edita_trf(Lista_tarefas *lista, int id);
 void concluir_trf(Lista_tarefas *lista, int id, int estado);
-void salvar_arq(Lista_tarefas *lista);
-void ler_arq(Lista_tarefas *lista);
+void salvar_arq(Lista_contatos *lista);
+void ler_arq(Lista_contatos *lista);
 
 #endif
