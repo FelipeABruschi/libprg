@@ -3,7 +3,7 @@
 #include <string.h>
 
 #define CAPACIDADE_INICIAL 10
-int id = 1;
+int id_inicial = 1;
 
 Lista_tarefas *criar_lista_trf()
 {
@@ -30,8 +30,8 @@ int add_trf(Lista_tarefas *lista, tarefa nova_trf)
     }
     nova_trf.status = 0;
     nova_trf.conclusao = 0;
-    nova_trf.codigo = id;
-    id++;
+    nova_trf.codigo = id_inicial;
+    id_inicial++;
 
     lista->trf[lista->tamanho] = nova_trf;
     lista->tamanho++;
@@ -50,7 +50,7 @@ int excluir_trf(Lista_tarefas *lista, int id)
     return 1; //id nao existe
 }
 
-Lista_tarefas* busca_trf(Lista_tarefas *lista, char *string)
+Lista_tarefas* busca_trf(Lista_tarefas *lista, char *string, int data)
 {
     Lista_tarefas *encontradas = criar_lista_trf();
 
@@ -60,8 +60,7 @@ Lista_tarefas* busca_trf(Lista_tarefas *lista, char *string)
             add_trf(encontradas, lista->trf[i]);
         else if(strcasecmp(string, lista->trf[i].prioridade) == 0)
             add_trf(encontradas, lista->trf[i]);
-        else if(strcmp(string, lista->trf[i].prazo) == 0 || strcmp(string, lista->trf[i].conclusao) == 0)
-            add_trf(encontradas, lista->trf[i]);
+
     }
     return encontradas;
 }
@@ -74,11 +73,16 @@ tarefa* edita_trf(Lista_tarefas *lista, int id)
     return NULL;
 }
 
-void concluir_trf(Lista_tarefas *lista, int id, int estado)
+int concluir_trf(Lista_tarefas *lista, int id, int data)
 {
     for(int i = 0; i < lista->tamanho; i++)
         if(lista->trf[i].codigo == id)
-            lista->trf[i].status = estado;
+        {
+            lista->trf[i].conclusao = data;
+            lista->trf[i].status = 1;
+            return 0;
+        }
+    return 1; //nao encontrou id
 }
 
 
