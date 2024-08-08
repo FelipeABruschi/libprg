@@ -3,6 +3,7 @@
 #include <string.h>
 
 #define CAPACIDADE_INICIAL 10
+int id = 1;
 
 Lista_tarefas *criar_lista_trf()
 {
@@ -27,7 +28,10 @@ int add_trf(Lista_tarefas *lista, tarefa nova_trf)
         if(lista->trf == NULL)
             return 1;
     }
-    nova_trf.codigo = lista->tamanho + 1;
+    nova_trf.status = 0;
+    nova_trf.conclusao = 0;
+    nova_trf.codigo = id;
+    id++;
 
     lista->trf[lista->tamanho] = nova_trf;
     lista->tamanho++;

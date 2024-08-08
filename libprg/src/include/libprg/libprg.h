@@ -103,8 +103,8 @@ typedef struct tarefa
 {
     char descricao[50];
     char prioridade[10];
-    char prazo[10];
-    char conclusao[10];
+    int prazo;
+    int conclusao;
     int status;
     int codigo;
 }tarefa;
