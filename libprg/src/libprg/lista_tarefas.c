@@ -5,6 +5,33 @@
 #define CAPACIDADE_INICIAL 10
 int id_inicial = 1;
 
+#include <ctype.h>
+#include <stddef.h>
+
+char *strcasestr(const char *haystack, const char *needle) {
+    size_t needle_len;
+    if ((needle_len = strlen(needle)) == 0) {
+        return (char *)haystack;
+    }
+
+    for (; *haystack; ++haystack) {
+        if (tolower(*haystack) == tolower(*needle)) {
+            const char *h = haystack;
+            const char *n = needle;
+
+            while (*n && tolower(*h) == tolower(*n)) {
+                ++h;
+                ++n;
+            }
+
+            if (*n == '\0') {
+                return (char *)haystack;
+            }
+        }
+    }
+    return NULL;
+}
+
 Lista_tarefas *criar_lista_trf()
 {
     Lista_tarefas *lista = (Lista_tarefas *) malloc(sizeof(Lista_tarefas));
