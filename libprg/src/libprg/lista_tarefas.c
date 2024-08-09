@@ -29,7 +29,7 @@ int add_trf(Lista_tarefas *lista, tarefa nova_trf)
             return 1;
     }
     nova_trf.status = 0;
-    nova_trf.conclusao = 0;
+    nova_trf.conclusao = 00000000;
     nova_trf.codigo = id_inicial;
     id_inicial++;
 
