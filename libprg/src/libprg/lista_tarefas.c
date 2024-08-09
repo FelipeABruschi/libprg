@@ -50,17 +50,24 @@ int excluir_trf(Lista_tarefas *lista, int id)
     return 1; //id nao existe
 }
 
-Lista_tarefas* busca_trf(Lista_tarefas *lista, char *string, int data)
+Lista_tarefas* busca_trf(Lista_tarefas *lista, char *desc, char *prio, int prazo, int conc)
 {
     Lista_tarefas *encontradas = criar_lista_trf();
 
     for(int i = 0; i < lista->tamanho; i++)
     {
-        if(strcasestr(lista->trf[i].descricao, string) != NULL)
-            add_trf(encontradas, lista->trf[i]);
-        else if(strcasecmp(string, lista->trf[i].prioridade) == 0)
-            add_trf(encontradas, lista->trf[i]);
-
+        if(desc != "")
+            if(strcasestr(lista->trf[i].descricao, desc) != NULL)
+                add_trf(encontradas, lista->trf[i]);
+        if(prio != "")
+            if(strcasecmp(lista->trf[i].prioridade, prio) == 0)
+                add_trf(encontradas, lista->trf[i]);
+        if(prazo != 0)
+            if(lista->trf[i].prazo == prazo)
+                add_trf(encontradas, lista->trf[i]);
+        if(conc != 0)
+            if(lista->trf[i].conclusao == conc)
+                add_trf(encontradas, lista->trf[i]);
     }
     return encontradas;
 }
@@ -77,8 +84,6 @@ int edita_trf(Lista_tarefas *lista, int id, char *desc, char *prio, int prazo)
         }
     return 1;
 }
-
-
 
 int concluir_trf(Lista_tarefas *lista, int id, int data)
 {
