@@ -122,7 +122,8 @@ int excluir_trf(Lista_tarefas *lista, int id);
 Lista_tarefas* busca_trf(Lista_tarefas *lista, char *desc, char *prio, int prazo, int conc);
 int edita_trf(Lista_tarefas *lista, int id, char *desc, char *prio, int prazo);
 int concluir_trf(Lista_tarefas *lista, int id, int data);
-void salvar_arq(Lista_contatos *lista);
-void ler_arq(Lista_contatos *lista);
+char *strcasestr(const char *haystack, const char *needle);
+int salvar_trfs(Lista_tarefas *lista);
+int ler_trfs(Lista_tarefas *lista);
 
 #endif

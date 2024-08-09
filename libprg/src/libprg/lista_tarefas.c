@@ -4,6 +4,7 @@
 
 #define CAPACIDADE_INICIAL 10
 int id_inicial = 1;
+int maior_id;
 
 #include <ctype.h>
 #include <stddef.h>
@@ -58,6 +59,7 @@ int add_trf(Lista_tarefas *lista, tarefa nova_trf)
     nova_trf.status = 0;
     nova_trf.conclusao = 00000000;
     nova_trf.codigo = id_inicial;
+    maior_id = id_inicial;
     id_inicial++;
 
     lista->trf[lista->tamanho] = nova_trf;
@@ -122,6 +124,34 @@ int concluir_trf(Lista_tarefas *lista, int id, int data)
             return 0;
         }
     return 1; //nao encontrou id
+}
+
+int salvar_trfs(Lista_tarefas *lista)
+{
+    FILE *arq = fopen("tarefas.bin", "wb");
+    if(arq)
+    {
+        fprintf(arq, "%d\n", maior_id);
+        fprintf(arq, "%d\n", lista->tamanho);
+        fwrite(lista->trf, sizeof(tarefa), lista->tamanho, arq);
+        fclose(arq);
+        return 0;
+    }
+    return 1;
+}
+
+int ler_trfs(Lista_tarefas *lista)
+{
+    FILE *arq = fopen("tarefas.bin", "rb");
+    if(arq)
+    {
+        fscanf(arq, "%d\n", &maior_id);
+        fscanf(arq, "%d\n", &lista->tamanho);
+        fread(lista->trf, sizeof(tarefa), lista->tamanho, arq);
+        fclose(arq);
+        return 0;
+    }
+    return 1;
 }
 
 
