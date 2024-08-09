@@ -65,13 +65,20 @@ Lista_tarefas* busca_trf(Lista_tarefas *lista, char *string, int data)
     return encontradas;
 }
 
-tarefa* edita_trf(Lista_tarefas *lista, int id)
+int edita_trf(Lista_tarefas *lista, int id, char *desc, char *prio, int prazo)
 {
     for(int i = 0; i < lista->tamanho; i++)
         if(lista->trf[i].codigo == id)
-            return &lista->trf[i];
-    return NULL;
+        {
+            strcpy(lista->trf[i].descricao, desc);
+            strcpy(lista->trf[i].prioridade, prio);
+            lista->trf[i].prazo = prazo;
+            return 0;
+        }
+    return 1;
 }
+
+
 
 int concluir_trf(Lista_tarefas *lista, int id, int data)
 {
