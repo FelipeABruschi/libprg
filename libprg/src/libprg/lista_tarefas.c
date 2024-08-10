@@ -126,6 +126,50 @@ int concluir_trf(Lista_tarefas *lista, int id, int data)
     return 1; //nao encontrou id
 }
 
+int ordenar_trfs(Lista_tarefas *lista, int forma, int modo)
+{
+    for(int i = 0; i < lista->tamanho; i++)
+        for(int j = 0; j < lista->tamanho - 1; j++)
+            switch (forma)
+            {
+                case 1:
+                case 2:
+                    if(modo == 1)
+                        if(lista->trf[j].prazo < lista->trf[j + 1].prazo)
+                        {
+                            tarefa aux = lista->trf[j];
+                            lista->trf[j] = lista->trf[j + 1];
+                            lista->trf[j + 1] = aux;
+                        }
+                    else
+                        if(lista->trf[j].prazo > lista->trf[j + 1].prazo)
+                        {
+                            tarefa aux = lista->trf[j];
+                            lista->trf[j] = lista->trf[j + 1];
+                            lista->trf[j + 1] = aux;
+                        }
+                    break;
+                case 3:
+                    if(modo == 1)
+                        if(lista->trf[j].conclusao < lista->trf[j + 1].conclusao)
+                        {
+                            tarefa aux = lista->trf[j];
+                            lista->trf[j] = lista->trf[j + 1];
+                            lista->trf[j + 1] = aux;
+                        }
+                    else
+                        if(lista->trf[j].conclusao > lista->trf[j + 1].conclusao)
+                        {
+                            tarefa aux = lista->trf[j];
+                            lista->trf[j] = lista->trf[j + 1];
+                            lista->trf[j + 1] = aux;
+                        }
+                    break;
+                default: break;
+            }
+
+}
+
 int salvar_trfs(Lista_tarefas *lista)
 {
     FILE *arq = fopen("tarefas.bin", "wb");

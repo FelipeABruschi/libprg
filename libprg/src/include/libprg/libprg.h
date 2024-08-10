@@ -122,6 +122,7 @@ int excluir_trf(Lista_tarefas *lista, int id);
 Lista_tarefas* busca_trf(Lista_tarefas *lista, char *desc, char *prio, int prazo, int conc);
 int edita_trf(Lista_tarefas *lista, int id, char *desc, char *prio, int prazo);
 int concluir_trf(Lista_tarefas *lista, int id, int data);
+int ordenar_trfs(Lista_tarefas *lista, int forma, int modo);
 char *strcasestr(const char *haystack, const char *needle);
 int salvar_trfs(Lista_tarefas *lista);
 int ler_trfs(Lista_tarefas *lista);
