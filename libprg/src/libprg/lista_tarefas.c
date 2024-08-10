@@ -126,7 +126,7 @@ int concluir_trf(Lista_tarefas *lista, int id, int data)
     return 1; //nao encontrou id
 }
 
-int ordenar_trfs(Lista_tarefas *lista, int forma, int modo)
+void ordenar_trfs(Lista_tarefas *lista, int forma, int modo)
 {
     for(int i = 0; i < lista->tamanho; i++)
         for(int j = 0; j < lista->tamanho - 1; j++)
@@ -167,7 +167,6 @@ int ordenar_trfs(Lista_tarefas *lista, int forma, int modo)
                     break;
                 default: break;
             }
-
 }
 
 int salvar_trfs(Lista_tarefas *lista)
