@@ -127,4 +127,15 @@ char *strcasestr(const char *haystack, const char *needle);
 int salvar_trfs(Lista_tarefas *lista);
 int ler_trfs(Lista_tarefas *lista);
 
+typedef struct no_arv {
+    int valor;
+    struct no_arv *esquerda;
+    struct no_arv *direita;
+}no_arv;
+
+no_arv *criar_no(int valor);
+void destruir_no(no_arv *no);
+no_arv *inserir_valor(no_arv *raiz, int valor);
+bool busca(no_arv *raiz, int valor);
+
 #endif
