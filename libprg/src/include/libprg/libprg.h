@@ -127,7 +127,8 @@ char *strcasestr(const char *haystack, const char *needle);
 int salvar_trfs(Lista_tarefas *lista);
 int ler_trfs(Lista_tarefas *lista);
 
-typedef struct no_arv {
+typedef struct no_arv
+{
     int valor;
     struct no_arv *esquerda;
     struct no_arv *direita;
@@ -137,5 +138,20 @@ no_arv *criar_no(int valor);
 void destruir_no(no_arv *no);
 no_arv *inserir_valor(no_arv *raiz, int valor);
 bool busca(no_arv *raiz, int valor);
+
+typedef struct no_avl
+{
+    int valor;
+    int altura; // altura da subárvore
+    struct no_avl *esquerda;
+    struct no_avl *direita;
+} no_avl;
+
+int altura(no_avl *v);
+int fator_balanceamento(no_avl *v);
+no_avl *rotacao_esquerda(no_avl *v);
+no_avl *rotacao_direita(no_avl *v);
+no_avl *rotacao_dupla_esquerda(no_avl *v);
+no_avl *rotacao_dupla_direita(no_avl *v);
 
 #endif
