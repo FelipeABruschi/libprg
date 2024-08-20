@@ -127,17 +127,17 @@ char *strcasestr(const char *haystack, const char *needle);
 int salvar_trfs(Lista_tarefas *lista);
 int ler_trfs(Lista_tarefas *lista);
 
-typedef struct no_arv
-{
-    int valor;
-    struct no_arv *esquerda;
-    struct no_arv *direita;
-}no_arv;
-
-no_arv *criar_no(int valor);
-void destruir_no(no_arv *no);
-no_arv *inserir_valor(no_arv *raiz, int valor);
-bool busca(no_arv *raiz, int valor);
+// typedef struct no_arv
+// {
+//     int valor;
+//     struct no_arv *esquerda;
+//     struct no_arv *direita;
+// }no_arv;
+//
+// no_arv *criar_no(int valor);
+// void destruir_no(no_arv *no);
+// no_arv *inserir_valor(no_arv *raiz, int valor);
+// bool busca(no_arv *raiz, int valor);
 
 typedef struct no_avl
 {
@@ -147,11 +147,13 @@ typedef struct no_avl
     struct no_avl *direita;
 } no_avl;
 
+no_avl *criar_no(int valor);
 int altura(no_avl *v);
 int fator_balanceamento(no_avl *v);
 no_avl *rotacao_esquerda(no_avl *v);
 no_avl *rotacao_direita(no_avl *v);
 no_avl *rotacao_dupla_esquerda(no_avl *v);
 no_avl *rotacao_dupla_direita(no_avl *v);
+no_avl *balancear(no_avl *v);
 
 #endif
