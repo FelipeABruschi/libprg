@@ -17,13 +17,13 @@ result_t compute(double a, double b, operation_t op);
 
 typedef struct Lista_linear Lista_linear;
 
-Lista_linear *criar_lista(bool ordenada);
-void imprimir(Lista_linear *lista);
-void inserir(Lista_linear *lista, int x);
-void remover(Lista_linear *lista, int x);
-int busca_linear(Lista_linear *lista, int x);
-int busca_binaria(Lista_linear *lista, int x);
-int busca_bin_rec(Lista_linear *lista, int x, int inicio, int final);
+// Lista_linear *criar_lista(bool ordenada);
+// void imprimir(Lista_linear *lista);
+// void inserir(Lista_linear *lista, int x);
+// void remover(Lista_linear *lista, int x);
+// int busca_linear(Lista_linear *lista, int x);
+// int busca_binaria(Lista_linear *lista, int x);
+// int busca_bin_rec(Lista_linear *lista, int x, int inicio, int final);
 
 typedef struct ctt
 {
@@ -155,8 +155,8 @@ no_avl *rotacao_direita(no_avl *v);
 no_avl *rotacao_dupla_esquerda(no_avl *v);
 no_avl *rotacao_dupla_direita(no_avl *v);
 no_avl *balancear(no_avl *v);
-no_avl *inserir_no_avl(no_avl *v, int valor);
-no_avl *remover_no_avl(no_avl *raiz, int valor);
+no_avl *inserir(no_avl *v, int valor);
+no_avl *remover(no_avl *raiz, int valor);
 
 
 #endif
