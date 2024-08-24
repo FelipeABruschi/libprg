@@ -91,28 +91,28 @@ no_avl *balancear(no_avl *v)
     return v;
 }
 
-no_avl *inse(no_avl *v, int valor)
+no_avl *inserir(no_avl *v, int valor)
 {
     if (v == NULL)
         v = criar_no(valor);
     else if (valor < v->valor)
-        v->esquerda = inse(v->esquerda, valor);
+        v->esquerda = inserir(v->esquerda, valor);
     else if (valor > v->valor)
-        v->direita = inse(v->direita, valor);
+        v->direita = inserir(v->direita, valor);
 
     v->altura = 1 + max(altura(v->esquerda), altura(v->direita));
     v = balancear(v); // é necessário balancear após cada inserção
     return v;
 }
 
-no_avl *remo(no_avl *raiz, int valor)
+no_avl *remover(no_avl *raiz, int valor)
 {
     if (raiz == NULL)
         return NULL;
     else if (valor < raiz->valor)
-        raiz->esquerda = remo(raiz->esquerda, valor);
+        raiz->esquerda = remover(raiz->esquerda, valor);
     else if (valor > raiz->valor)
-        raiz->direita = remo(raiz->direita, valor);
+        raiz->direita = remover(raiz->direita, valor);
     else // valor == v−>valor
     {
         if (raiz->esquerda == NULL && raiz->direita == NULL) // nó folha (sem filhos)
@@ -126,7 +126,7 @@ no_avl *remo(no_avl *raiz, int valor)
             while (aux->direita != NULL)
                 aux = aux->direita;
             raiz->valor = aux->valor;
-            raiz->esquerda = remo(raiz->esquerda, aux->valor);
+            raiz->esquerda = remover(raiz->esquerda, aux->valor);
         }
         else // nó com apenas 1 filho
         {
