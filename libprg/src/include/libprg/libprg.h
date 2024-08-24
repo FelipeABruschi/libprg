@@ -155,8 +155,8 @@ no_avl *rotacao_direita(no_avl *v);
 no_avl *rotacao_dupla_esquerda(no_avl *v);
 no_avl *rotacao_dupla_direita(no_avl *v);
 no_avl *balancear(no_avl *v);
-no_avl *inserir(no_avl *v, int valor);
-no_avl *remover(no_avl *raiz, int valor);
+no_avl *inse(no_avl *v, int valor);
+no_avl *remo(no_avl *raiz, int valor);
 
 
 #endif
