@@ -91,7 +91,7 @@ no_avl *balancear(no_avl *v)
     return v;
 }
 
-no_avl *inserir(no_avl *v, int valor)
+no_avl *inserir_no_avl(no_avl *v, int valor)
 {
     if (v == NULL)
         v = criar_no(valor);
@@ -105,7 +105,7 @@ no_avl *inserir(no_avl *v, int valor)
     return v;
 }
 
-no_avl *remover(no_avl *raiz, int valor)
+no_avl *remover_no_avl(no_avl *raiz, int valor)
 {
     if (raiz == NULL)
         return NULL;
