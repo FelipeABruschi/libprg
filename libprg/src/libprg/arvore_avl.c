@@ -2,7 +2,7 @@
 #define max(a,b) (((a) > (b)) ? (a) : (b))
 int contador_rotacao = 0;
 
-int conta_rotacao(int contador)
+int conta_rotacao()
 {
     return contador_rotacao;
 }
