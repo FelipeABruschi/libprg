@@ -2,6 +2,11 @@
 #define max(a,b) (((a) > (b)) ? (a) : (b))
 int contador_rotacao = 0;
 
+int conta_rotacao(int contador)
+{
+    return contador_rotacao;
+}
+
 no_avl *criar_no(int valor)
 {
     no_avl *no = malloc(sizeof(no_avl));
