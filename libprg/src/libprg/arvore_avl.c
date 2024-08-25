@@ -1,6 +1,6 @@
 #include "libprg/libprg.h"
 #define max(a,b) (((a) > (b)) ? (a) : (b))
-contador_rotacao = 0;
+int contador_rotacao = 0;
 
 no_avl *criar_no(int valor)
 {
