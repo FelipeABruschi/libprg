@@ -1,5 +1,6 @@
-    #include "libprg/libprg.h"
+#include "libprg/libprg.h"
 #define max(a,b) (((a) > (b)) ? (a) : (b))
+int contador = 0;
 
 no_avl *criar_no(int valor)
 {
@@ -42,6 +43,7 @@ no_avl *rotacao_esquerda(no_avl *v)
     u->esquerda = v;
     v->altura = max(altura(v->esquerda), altura(v->direita)) + 1;
     u->altura = max(altura(u->esquerda), altura(u->direita)) + 1;
+    contador++;
 
     return u;
 }
@@ -53,6 +55,7 @@ no_avl *rotacao_direita(no_avl *v)
     u->direita = v;
     v->altura = max(altura(v->esquerda), altura(v->direita)) + 1;
     u->altura = max(altura(u->esquerda), altura(u->direita)) + 1;
+    contador++;
 
     return u;
 }
