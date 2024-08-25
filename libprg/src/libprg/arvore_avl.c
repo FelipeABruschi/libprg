@@ -148,3 +148,7 @@ no_avl *remover(no_avl *raiz, int valor)
     }
     return raiz;
 }
+
+int paka(int valor) {
+    return 4;
+}
