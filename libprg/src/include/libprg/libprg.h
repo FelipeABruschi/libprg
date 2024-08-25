@@ -157,6 +157,6 @@ no_avl *rotacao_dupla_direita(no_avl *v);
 no_avl *balancear(no_avl *v);
 no_avl *inserir(no_avl *v, int valor);
 no_avl *remover(no_avl *raiz, int valor);
-int contador;
+int contador_rotacao;
 
 #endif
